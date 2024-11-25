@@ -50,6 +50,7 @@
 
 .navbar-search-icon {
     display: flex;
+    position: relative;
 }
 
 .navbar-search-icon .dot {
@@ -58,8 +59,8 @@
     min-height: 10px;
     background-color: tomato;
     border-radius: 5px;
-    top: 14px;
-    right: 174px;
+    top: -6px;
+    right: 47px;
 }
 .navbar-search-icon-basket{
     margin-right: 30px;
