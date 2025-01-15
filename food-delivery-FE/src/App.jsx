@@ -10,14 +10,15 @@ import Verify from './pages/Verify/Verify'
 import MyOrders from './pages/MyOrders/MyOrders'
 
 const App = () => {
-  const [showLogin, setShowLogin] = useState(false)
+  const [showLogin, setShowLogin] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("")
   return (
     <>
       {showLogin ? <LoginPop setShowLogin={setShowLogin} /> : <></>}
       <div className='app'>
-        <Navbar showLogin={showLogin} setShowLogin={setShowLogin} />
+        <Navbar showLogin={showLogin} setShowLogin={setShowLogin} setSearchQuery={setSearchQuery}/>
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Home searchQuery={searchQuery}/>} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/order' element={<PlaceOrder />} />
           <Route path='/verify' element={<Verify />} />

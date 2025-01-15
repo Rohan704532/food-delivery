@@ -4,7 +4,7 @@ import { assets } from '../../assets/assets'
 import { Link, useNavigate } from 'react-router-dom'
 import { StoreContext } from '../../context/StoreContext'
 
-const Navbar = ({ setShowLogin }) => {
+const Navbar = ({ setShowLogin,setSearchQuery }) => {
     const [menu, setMenu] = useState("home");
     const [searchBar, setSearchBar] = useState(false);
     const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
@@ -14,6 +14,7 @@ const Navbar = ({ setShowLogin }) => {
         setToken("");
         navigate("/");
     }
+    const [query,setQuery] = useState('');
     return (
         <div className='navbar'>
             <Link to="/"><img className='logo' src={assets.logo} alt="logo" /></Link>
@@ -26,7 +27,7 @@ const Navbar = ({ setShowLogin }) => {
             <div className='navbar-right'>
                 <img onClick={() => setSearchBar(prev => !prev)} src={assets.search_icon} alt="" />
                 {searchBar && <div className='navbar-search-bar'>
-                    <input type="text" placeholder="Search for food, coffe, etc..." />
+                    <input type="text" placeholder="Search for food, coffe, etc..." onChange={(e)=>setSearchQuery(e.target.value)}/>
                 </div>}
                 <div className='navbar-search-icon'>
                     <Link to="/cart"><img className='navbar-search-icon-basket' src={assets.basket_icon} alt="" /></Link>
